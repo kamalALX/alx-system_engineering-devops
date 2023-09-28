@@ -1,3 +1,2 @@
 #!/bin/bash
-ls -a | tr '\n' ','; echo
-
+ls -apm
