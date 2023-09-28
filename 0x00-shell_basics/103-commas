@@ -1,2 +1,3 @@
 #!/bin/bash
-ls -apcX
+ls -a | tr '\n' ','; echo
+
