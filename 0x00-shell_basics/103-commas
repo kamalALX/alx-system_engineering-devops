@@ -1,2 +1,2 @@
 #!/bin/bash
-ls -apcX echo
+ls -apcX
