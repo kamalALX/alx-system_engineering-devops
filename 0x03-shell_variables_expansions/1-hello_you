@@ -1,3 +1,2 @@
 #!/bin/bash
-user=$(whoami)
-printf "hello ${user}\n"
+echo "hello $(whoami)"
