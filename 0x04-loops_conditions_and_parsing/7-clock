@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# prints "Best School" 9 times the hi then "Best School"
+i=0
+while [ $i != 13 ]; do
+	echo "Hour: $i"
+	j=1
+	while [ $j != 60 ]; do
+		echo "$j"
+		(( j += 1 ))
+	done
+	(( i += 1 ))
+done
