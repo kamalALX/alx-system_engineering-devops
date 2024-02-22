@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# prints "Best School" 9 times the hi then "Best School"
+i=0
+while [ $i != 10 ]; do
+	if [ $i == 9 ]; then
+		echo "Hi"
+	fi
+	echo "Best School"
+	(( i += 1 ))
+done
