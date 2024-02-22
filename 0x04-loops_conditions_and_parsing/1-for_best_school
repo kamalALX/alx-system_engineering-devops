@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+range=10
+i=1
+while [ "$i" -le $range ]; do
+	echo "Best School";
+	let "i += 1"
+done
