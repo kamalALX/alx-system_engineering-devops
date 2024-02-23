@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+#comment
+while IFS=: read -r v1 v2 v3 v4 v5 v6 v7; do
+	echo "The user $v1 is part of the $v4 gang,"\
+  "lives in $v6 and rides $v7."\
+  "$v3's place is protected by the passcode $v2,"\
+  "more info about the user here: $v5"
+done < "/etc/passwd"
