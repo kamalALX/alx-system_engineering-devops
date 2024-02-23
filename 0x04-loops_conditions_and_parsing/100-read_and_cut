@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 #Comment
-while IFS=: read -r v1 v2 v3 v4 v5 v6 v7; do
+while IFS=: read -r v1 _ v3 _ _ v6 _; do
 	printf '%s:%s:%s\n' "$v1" "$v3" "$v6"
 done < "/etc/passwd"
