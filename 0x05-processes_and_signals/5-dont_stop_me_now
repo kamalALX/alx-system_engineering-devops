@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 #Comment
-processid=$(pgrep -f 4-to_infinity_and_beyond)
-kill "$processid"
+#processid=$(pgrep -f 4-to_infinity_and_beyond)
+pkill "4-to_infinity_and_beyond"
