@@ -2,12 +2,12 @@
 
 # Usage function to display help
 usage() {
-  echo "Usage: $0 PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
+  echo "Usage: 0-transfer_file PATH_TO_FILE IP USERNAME PATH_TO_SSH_KEY"
   exit 1
 }
 
 # Check if at least 3 parameters are passed
-if [ "$#" -lt 3 ]; then
+if [ "$#" -lt 4 ]; then
   usage
 fi
 
@@ -17,7 +17,7 @@ IP=$2
 USERNAME=$3
 PATH_TO_SSH_KEY=$4
 
-DESTINATION="${USERNAME}@${IP}:${PATH_TO_SSH_KEY}"
+DESTINATION="${USERNAME}@${IP}"
 c:with
 # SCP command with strict host key checking disabled
 scp -o StrictHostKeyChecking=no -i "$PATH_TO_SSH_KEY" "$PATH_TO_FILE" "$DESTINATION"
