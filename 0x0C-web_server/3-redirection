@@ -21,12 +21,12 @@ SERVER_CONFIG=\
 	if (\$request_filename ~ redirect_me){
 		rewrite ^ https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 	}
+	error_page 404 /404.html;
+	location = /404.html{
+		internal;
+	}
 }"
 
 bash -c "echo -e '$SERVER_CONFIG' > /etc/nginx/sites-enabled/default"
 
-if [ "$(pgrep -c nginx)" -le 0 ]; then
-	service nginx start
-else
-	service nginx restart
-fi
+sudo service nginx restart
