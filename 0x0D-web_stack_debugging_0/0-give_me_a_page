@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Fix my server
+
+docker exec -it 47ca3994a491 /bin/bash
+service apache2 start
+exit
