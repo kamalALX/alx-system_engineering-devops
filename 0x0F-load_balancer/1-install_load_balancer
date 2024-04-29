@@ -38,7 +38,7 @@ listen hbnb 0.0.0.0:80
 	option httpclose
 	option forwardfor
 	server 531095-web-01 100.25.165.190:80 check
-	server lamp2 10.0.0.2:80 check
+	server 531095-web-02 54.162.91.137 check
 " >> /etc/haproxy/haproxy.cfg
 
 service haproxy start
