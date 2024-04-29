@@ -8,11 +8,10 @@ add-apt-repository -y ppa:vbernat/haproxy-1.8
 apt-get update
 apt-get install -y haproxy=1.8.\*
 
-echo "ENABLED=1" >> /etc/default/haproxy
+sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
 mv /etc/haproxy/haproxy.cfg{,.original}
-touch /etc/haproxy/haproxy.cfg
 
-printf %s "global
+echo "global
     log 127.0.0.1 local0 notice
     maxconn 2000
     user haproxy
@@ -39,6 +38,6 @@ listen hbnb
     option forwardfor
     server 531095-web-01 100.25.165.190:80 check
     server 531095-web-02 54.162.91.137:80 check
-" >> /etc/haproxy/haproxy.cfg
+" > sudo tee /etc/haproxy/haproxy.cfg > /dev/null
 
 service haproxy start
