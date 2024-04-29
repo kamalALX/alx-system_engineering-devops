@@ -40,6 +40,6 @@ listen hbnb
     option forwardfor
     server 531095-web-01 100.25.165.190:80 check
     server 531095-web-02 54.162.91.137:80 check
-" > /etc/haproxy/haproxy.cfg'
+" >> /etc/haproxy/haproxy.cfg'
 
 service haproxy start
