@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+# Configuring Nginx server
+
+# Update package lists
+sudo apt-get update
+
+# Install Nginx
+sudo apt-get install -y nginx
+
+# Create index.html and custom_404.html files
+echo "Hello World!" | sudo tee /var/www/html/index.html >/dev/null
+echo "Ceci n'est pas une page" | sudo tee /var/www/html/custom_404.html >/dev/null
+
+
+# Configure Nginx
+echo "server {
+    listen 80;
+    listen [::]:80;
+
+    root /var/www/html;
+    index index.html;
+
+    error_page 404 /custom_404.html;
+    location = /custom_404.html {
+        root /var/www/html;
+        internal;
+    }
+
+    rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+
+    add_header X-Served-By $(hostname);
+}" > /etc/nginx/sites-enabled/default
+
+# Restart Nginx
+sudo service nginx restart
+

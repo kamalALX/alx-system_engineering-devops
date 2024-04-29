@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+apt-get upadate
+apt-get install --no-install-recommends software-properties-common
+add-apt-repository ppa:vbernat/haproxy-2.8
+apt-get install haproxy=2.8.\*
+
+# enable HAProxy to be started by the init script.
+FILE="/etc/default/haproxy"
+sed -i 's/ENABLED=0/ENABLED=1/' "$FILE"
+
+#We’ll move the default configuration file and create our own one.
+mv /etc/haproxy/haproxy.cfg{,.original}
+
+echo "global
+		log 127.0.0.1 local0 notice
+		maxconn 2000
+		user haproxy
+		group haproxy
+
+defaults
+	log     global
+	mode    http
+	option  httplog
+	option  dontlognull
+	retries 3
+	option redispatch
+	timeout connect  5000
+	timeout client  10000
+	timeout server  10000
+
+listen hbnb 0.0.0.0:80
+	mode http
+	stats enable
+	stats uri /haproxy?stats
+	stats realm Strictly\ Private
+	balance roundrobin
+	option httpclose
+	option forwardfor
+	server 531095-web-01 100.25.165.190:80 check
+	server lamp2 10.0.0.2:80 check
+" >> /etc/haproxy/haproxy.cfg
+
+service haproxy start
