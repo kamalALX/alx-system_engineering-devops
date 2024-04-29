@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-apt-get upadate
-apt-get install --no-install-recommends software-properties-common
+apt-get update
+apt-get install -y software-properties-common
 add-apt-repository ppa:vbernat/haproxy-2.8
 apt-get install haproxy=2.8.\*
 
@@ -29,7 +29,8 @@ defaults
 	timeout client  10000
 	timeout server  10000
 
-listen hbnb 0.0.0.0:80
+listen hbnb 
+	bind *:80
 	mode http
 	stats enable
 	stats uri /haproxy?stats
@@ -38,7 +39,7 @@ listen hbnb 0.0.0.0:80
 	option httpclose
 	option forwardfor
 	server 531095-web-01 100.25.165.190:80 check
-	server 531095-web-02 54.162.91.137 check
+	server 531095-web-02 54.162.91.137:80 check
 " >> /etc/haproxy/haproxy.cfg
 
 service haproxy start
