@@ -10,6 +10,7 @@ apt-get install -y haproxy=1.8.\*
 
 sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
 mv /etc/haproxy/haproxy.cfg{,.original}
+touch /etc/haproxy/haproxy.cfg
 
 sudo sh -c 'echo "
 global
