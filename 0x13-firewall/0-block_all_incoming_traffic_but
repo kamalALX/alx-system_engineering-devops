@@ -1,3 +1,5 @@
+sudo apt-get install ufw
+
 sudo sed "s/IPV6=no/IPV6=yes/" /etc/default/ufw
 
 sudo ufw default deny incoming
