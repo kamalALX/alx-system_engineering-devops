@@ -7,7 +7,6 @@ if __name__ == "__main__":
     import sys
     import json
 
-
     """ Define the API URLs """
     todos_url = 'https://jsonplaceholder.typicode.com/todos'
     users_url = 'https://jsonplaceholder.typicode.com/users'
@@ -20,29 +19,25 @@ if __name__ == "__main__":
     users_response = requests.get(users_url)
     users = users_response.json()
 
-    """ Find the user with the given employer_id """
-    names = []
-    ids = []
-    for user in users:
-            names.append(user['username'])
-            ids.append(user['id'])
+    all_users_data = {}
 
-    user_tasks = []
-    task_data = {}
-    users_data = {}
-    i = 0
-    for i in range(len(names) - 1):
+    for user in users:
+        user_id = user['id']
+        username = user['username']
+        
+        user_tasks = []
         for task in todos:
-            task_data = {
-                    "username": names[i],
+            if task['userId'] == user_id:
+                task_data = {
+                    "username": username,
                     "task": task.get('title'),
-                    "completed": task.get('completed'),
-                    }
-            user_tasks.append(task_data)
-            users_data = {ids[i]: user_tasks}
-        i = i + 1
+                    "completed": task.get('completed')
+                }
+                user_tasks.append(task_data)
+        
+        all_users_data[user_id] = user_tasks
 
     """ Write the JSON object to a file """
     filename = "todo_all_employees.json"
     with open(filename, 'w') as json_file:
-        json.dump(users_data, json_file)
+        json.dump(all_users_data, json_file)
