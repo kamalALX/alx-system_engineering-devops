@@ -30,8 +30,8 @@ if __name__ == "__main__":
     user_tasks = []
     task_data = {}
     users_data = {}
-    i = 1
-    for i in range(len(names)):
+    i = 0
+    for i in range(len(names) - 1):
         for task in todos:
             task_data = {
                     "username": names[i],
