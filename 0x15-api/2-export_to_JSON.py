@@ -34,10 +34,10 @@ if __name__ == "__main__":
     for task in todos:
         if task['userId'] == employer_id:
             task_data = {
-            "task": task.get('title'),
-            "completed": task.get('completed'),
-            "username": name
-        }
+                    "task": task.get('title'),
+                    "completed": task.get('completed'),
+                    "username": name
+                    }
             user_tasks.append(task_data)
 
     """ Create the JSON object """
