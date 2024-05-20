@@ -24,7 +24,7 @@ if __name__ == "__main__":
     for user in users:
         user_id = user['id']
         username = user['username']
-        
+
         user_tasks = []
         for task in todos:
             if task['userId'] == user_id:
@@ -34,7 +34,7 @@ if __name__ == "__main__":
                     "completed": task.get('completed')
                 }
                 user_tasks.append(task_data)
-        
+
         all_users_data[user_id] = user_tasks
 
     """ Write the JSON object to a file """
