@@ -26,7 +26,7 @@ if __name__ == "__main__":
     name = None
     for user in users:
         if user['id'] == employer_id:
-            name = user['name']
+            name = user['username']
             break
 
     user_tasks = []
