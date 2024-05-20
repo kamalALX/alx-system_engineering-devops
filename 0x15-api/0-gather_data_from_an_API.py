@@ -40,7 +40,10 @@ if __name__ == "__main__":
             break
 
     """ Print the result """
-    print('Employee {} is done with tasks({}/{}):'.format(name, done, all_tasks))
+    print(
+            'Employee {} is done with tasks({}/{}):'.format(
+                name, done, all_tasks)
+            )
 
     """ Print the titles of the completed tasks """
     for task in todos:
