@@ -1,0 +1,16 @@
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+
+
+    server_name 100.25.165.190;
+
+    add_header X-Served-By 531095-web-01;
+
+    location / {
+        proxy_pass http://localhost:5000;
+        include /etc/nginx/proxy_params;
+        proxy_redirect off;
+    }
+
+}
